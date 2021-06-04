@@ -1,6 +1,6 @@
 # fooddelivery
 
-A food delivery website where you will be given options of four hotels present in hubli,karnataka and the dishes present in the hotel 
+A food delivery website where you will be given options of four hotels present in Hubli,karnataka and the dishes present in the hotel 
 #
 You can order the dishes ,pay and complete the order 
 #
@@ -17,3 +17,4 @@ Similarly python3 manage.py migrate and
 python3 manage.py makemigrations 
 #
 Your website will run on local ip given in the terminal .It is generally 127.0.0.1:8000 
+#
