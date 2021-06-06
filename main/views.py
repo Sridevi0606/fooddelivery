@@ -19,8 +19,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'dixitappanni@gmail.com'
-EMAIL_HOST_PASSWORD = 'Yelguresh1901'
+EMAIL_HOST_USER = 'youremail'
+EMAIL_HOST_PASSWORD = 'password'
 
 from django.shortcuts import redirect
 from django.shortcuts import render
