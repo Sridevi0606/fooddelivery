@@ -19,8 +19,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'youremail'
-EMAIL_HOST_PASSWORD = 'password'
+EMAIL_HOST_USER = 'localhost'
+EMAIL_HOST_PASSWORD = ''
 
 from django.shortcuts import redirect
 from django.shortcuts import render
@@ -49,10 +49,36 @@ class MenuListView(ListView):
     model = Item
     template_name = 'main/home.html'
     context_object_name = 'menu_items'
+
+
+class about(ListView):
+    model = Item
+    template_name = 'main/about.html'
+
+class contact(ListView):
+    model = Item
+    template_name = 'main/contact.html'
+
 class MenuListView1(ListView):
     model = Item
     template_name = 'main/home1.html'
     context_object_name = 'menu_items'
+
+class MenuListView2(ListView):
+    model = Item2hotel
+    template_name = 'main/home2.html'
+    context_object_name = 'menu_items'
+
+class MenuListView3(ListView):
+    model = Itemnewhotel
+    template_name = 'main/home3.html'
+    context_object_name = 'menu_items'
+
+class MenuListView4(ListView):
+    model = Itemlasthotel
+    template_name = 'main/home4.html'
+    context_object_name = 'menu_items'
+
 def menuDetail(request, slug):
     item = Item.objects.filter(slug=slug).first()
     reviews = Reviews.objects.filter(rslug=slug).order_by('-id')[:7] 
@@ -135,6 +161,24 @@ def get_cart_items(request):
     }
     return render(request, 'main/cart.html', context)
 
+
+def createpayment(request):
+            post = paymentmodel()
+            fullname = request.POST.get('fullname')
+            address = request.POST.get('address')
+            cardname = request.POST.get('cardname')
+            cardnumber = request.POST.get('cardnumber')
+            cvv = request.POST.get('cvv')
+            post.save()
+            context = {
+                'fullname': fullname,
+                'address': address,
+                'cardname': cardname,
+                'cardnumber':cardnumber,
+            }
+            return render(request, 'main/done.html',context)
+
+
 class CartDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = CartItems
     success_url = '/cart'
@@ -158,6 +202,10 @@ def pay(request):
 
 def final(request):
     return render(request,'main/done.html')
+
+
+def contacted(request):
+    return render(request,'main/contactus.html')
 
 def end(request):
     return redirect(request,'main/Hotels.html')

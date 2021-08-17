@@ -2,6 +2,10 @@ from django.urls import path
 from . import views
 from .views import (
     MenuListView,
+    MenuListView1,
+    MenuListView2,
+    MenuListView3,
+    MenuListView4,
     menuDetail,
     add_to_cart,
     get_cart_items,
@@ -18,7 +22,9 @@ from .views import (
     final,
     update_status,
     end,
-    add_reviews, MenuList, MenuListView1,
+    about,
+    contact,
+    add_reviews, MenuList, MenuListView1, contacted,
 )
 
 app_name = "main"
@@ -27,6 +33,12 @@ urlpatterns = [
     path('', MenuList.as_view(), name='Hotels'),
     path('home', MenuListView.as_view(), name='home'),
     path('home1', MenuListView1.as_view(), name='home1'),
+    path('home2', MenuListView2.as_view(), name='home2'),
+    path('contact', contact.as_view(), name='contact'),
+    path('contactus', contacted, name='contacted'),
+    path('about', about.as_view(), name='about'),
+    path('home3', MenuListView3.as_view(), name='home3'),
+    path('home4', MenuListView4.as_view(), name='home4'),
     path('dishes/<slug>', views.menuDetail, name='dishes'),
     path('item_list/', views.item_list, name='item_list'),
     path('item/new/', ItemCreateView.as_view(), name='item-create'),
